@@ -1,0 +1,50 @@
+1，BeanFactory 和 ApplicationContext 有什么区别
+(1)BeanFactory：是Spring里面最底层的接口，
+包含了各种Bean的定义，读取bean配置文档，管理bean的加载、实例化，
+控制bean的生命周期，维护bean之间的依赖关系。
+ApplicationContext接口作为BeanFactory的派生，除了提供BeanFactory所具有的功能外，
+还提供了更完整的框架功能：
+a,继承MessageSource，因此支持国际化。
+b,统一的资源文件访问方式。
+c,提供在监听器中注册bean的事件。
+d,同时加载多个配置文件。
+e,载入多个（有继承关系）上下文 ，使得每一个上下文都专注于一个特定的层次，
+比如应用的web层。
+(2)BeanFactroy采用的是延迟加载形式来注入Bean的，即只有在使用到某个Bean时(调用getBean())，才对该Bean进行加载实例化。这样，我们就不能发现一些存在的Spring的配置问题。如果Bean的某一个属性没有注入，BeanFacotry加载后，直至第一次使用调用getBean方法才会抛出异常。
+(3)BeanFactory通常以编程的方式被创建，ApplicationContext还能以声明的方式创建，如使用ContextLoader。
+(4)BeanFactory和ApplicationContext都支持BeanPostProcessor、BeanFactoryPostProcessor的使用，但两者之间的区别是：BeanFactory需要手动注册，而ApplicationContext则是自动注册。
+
+ApplicationContext 包含 BeanFactory 的所有特性，通常推荐使用前者。
+但是也有一些限制情形，比如移动应用内存消耗比较严苛，
+在那些情景中，使用更轻量级的 BeanFactory 是更合理的。
+然而，在大多数企业级的应用中，ApplicationContext 是你的首选。
+
+2,Spring生命周期，这个流程图画的不错
+https://blog.csdn.net/lisongjia123/article/details/52091013
+1)实例化BeanFactoryPostProcessor实现类
+2)执行BeanFactoryPostProcessor的PostProcessBeanFactory
+3)实例化BeanPostProcessor实现类
+4)实例化InstantiationAwareBeanPostProcessor 实例化
+5)执行InstantiationAwareBeanPostProcessor 的PostProcessBeforeInstantiation方法
+6)执行Bean的构造方法
+7)执行InstantiationAwareBeanPostProcessor 的PostProcessAfterInstantiation
+8)执行InstantiationAwareBeanPostProcessor 的PostProcessPropertyValues方法
+9)为bean注入属性
+10)调用BeanNameAware的setBeanName方法
+11)调用BeanFactoryAware的setBeanFactory方法
+12)调用BeanPostProcessor的postProcessBeforeInitialization方法
+13)执行InitalizingBean的afterPropertiesSet方法
+14)执行init-method方法
+15)调用BeanPostProcessor的postProcessAfterInitialization方法
+16)调用SmartInitializingSingleton 的afterSingletonsInstantiated方法
+17)容器初始化完成，执行业务代码后，现在开始销毁容器
+18)调用DisposibleBean的Destory方法
+19)调用destory-method方法
+
+3，Spring IOC 如何实现 https://www.cnblogs.com/shoshana-kong/p/9047007.html
+首先想说说IoC（Inversion of Control，控制反转）。这是spring的核心，贯穿始终。所谓IoC，对于spring框架来说，
+就是由spring来负责控制对象的生命周期和对象间的关系
+
+IoC的一个重点是在系统运行中，动态的向某个对象提供它所需要的其他对象。
+这一点是通过DI（Dependency Injection，依赖注入）来实现的
+

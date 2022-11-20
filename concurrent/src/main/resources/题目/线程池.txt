@@ -1,0 +1,6 @@
+1，线程池的状态
+RUNNING
+SHOWDOWN
+STOP
+TIDYING  整理
+TERMINATED  终止结束

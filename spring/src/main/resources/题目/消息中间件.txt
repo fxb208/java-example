@@ -1,0 +1,18 @@
+1,基于磁盘的Kafka为什么这么快
+这两篇博文都有介绍
+https://juejin.im/post/5cff4541e51d45108c59a51f
+https://cloud.tencent.com/developer/article/1490575
+Kafka采用顺序读写、Page Cache、零拷贝以及分区分段等这些设计，再加上在索引方面做的优化，
+另外Kafka数据读写也是批量的而不是单条的，使得Kafka具有了高性能、高吞吐、低延时的特点。
+这样，Kafka提供大容量的磁盘存储也变成了一种优点
+
+2,消息队列使用场景
+https://blog.csdn.net/ntotl/article/details/72765713
+主要是前面三点
+1)异步处理
+2)应用解耦
+3)削锋填谷
+4)日志处理
+5)消息通讯 
+
+

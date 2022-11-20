@@ -1,0 +1,6 @@
+alter table t2 add unique(c);
+alter table t2 drop c;
+
+insert into t2 values(null,5,5);
+insert into t2 values(null,5,5);
+insert into t2 values(null,5,5);

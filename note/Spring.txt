@@ -1,0 +1,10 @@
+1，Spring Run
+
+2, SpringBoot Starter
+1) SpringFactoriesLoader
+SPI机制 Service Provider Interface   spring.factories文件
+2) Configuration
+3) @ConditionOnClass
+4) @EnableConfigurationProperties
+
+3, SpringBoot Run

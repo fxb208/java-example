@@ -1,0 +1,117 @@
+1,select count(*)
+select count(1) from t;
+select count(key) from t;
+select count(colum) from t;
+
+2, how to create index
+1) 前缀索引
+explain select create_time from person order by create_time limit 100;
+
+type   | possible_keys | key         | rows   | Extra          |
+index  | NULL          | create_time | 100    | Using index
+
+explain select name,score from person force index(name_score) order by name,score limit 100;
+
+type | possible_keys | key  | rows   | Extra          |
+ALL  | NULL          | NULL | 100147 | Using filesort
+    a)使用前缀索引就用不上覆盖索引对查询性能的优化了
+    b)排序用不上
+
+2) 倒序存储
+select field_list from t where id_card = reverse('input_id_card_string');
+3) 使用hash字段
+alter table t add id_card_crc int unsigned, add index(id_card_crc);
+SELECT
+    field_list
+FROM
+    t
+WHERE
+    id_card_crc = CRC32('input_id_card_string')
+        AND id_card = 'input_id_card_string'
+
+3, order by
+how to work
+sort_buffer
+
+
+4,group by
+-- no Using filesort
+explain select id%10 as m ,count(*) as c from t1 group by m;
+----------+------------------------------+
+| id | select_type | type  | possible_keys | key  | rows | Extra
+----------+------------------------------+
+|  1 | SIMPLE      | index | PRIMARY,a     | a    | 1000 | Using index; Using temporary
+
+alter table t1 add column z int generated always as(score % 100), add index(z);
+
+Using temporary
+
+5,union  union all
+
+
+explain (select 1000 as f) union all (select id from person order by id desc limit 2);
+explain (select 1000 as f) union (select id from person order by id desc limit 2);
+Using temporary
+
+6, join
+Index Nested-Loop Join
+Block Nested-Loop Join
+join_buffer
+
+
+7,operate colum index
+
+
+8,change buffer && redo log
+
+
+9,explain Extra
+Using temporary 表示的是需要使用临时表
+Using filesort 表示的是需要执行排序操作
+Backward index scan
+Using index
+Using index condition
+
+10,dirty pages, redo log
+mysql> show global status where variable_Name ='Innodb_buffer_pool_pages_total';
++--------------------------------+-------+
+| Variable_name                  | Value |
++--------------------------------+-------+
+| Innodb_buffer_pool_pages_total | 65536 |
++--------------------------------+-------+
+1 row in set (0.01 sec)
+
+mysql> show global status where variable_Name ='Innodb_buffer_pool_pages_dirty';
++--------------------------------+-------+
+| Variable_name                  | Value |
++--------------------------------+-------+
+| Innodb_buffer_pool_pages_dirty | 0     |
++--------------------------------+-------+
+
+11,lock
+
+8，sql优化
+1）union limit取更少的值
+2）最大值，最小值，可以用limit改写一下
+3）关联子查询
+4）覆盖索引，关联查询优化limit比较大的时候
+5）全局锁
+
+索引优化
+1）独立的列
+2）前缀索引和索引选择性
+3）多列索引
+4）选择索引列顺序
+5）聚集索引
+6）覆盖索引
+7）索引扫描来排序
+use index
+
+
+8）jstack分析
+阻塞 Blocked（重点关注）
+死锁 Deadlock（重点关注）
+等待资源 Waiting on condition（重点关注）
+等待获取监视器 Waiting on monitor entry（重点关注）
+
+

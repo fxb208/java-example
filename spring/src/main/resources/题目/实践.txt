@@ -1,0 +1,46 @@
+1,ZooKeeper分布式锁实践  
+a,Error:KeeperErrorCode = NoNode for /lock
+/lock节点不存在,需要先建立父节点/lock
+b,Error:KeeperErrorCode = NodeExists for /lock/4
+在每次新建一个节点时，一定要判断该节点（路径）是否存在，因为在ZooKeeper中路径使唯一的，
+所以当在该路径下已有节点时，继续往当前路径上新建节点就会报这个错
+c,查看所有子节点
+ls
+ls /lock
+d,删除节点
+delete /lock/1
+
+2,mysql查询缓存
+MySQL Query Cache 会缓存select 查询，安装时默认是开启的，
+但是如果对表进行INSERT, UPDATE, DELETE, TRUNCATE, ALTER TABLE, DROP TABLE, or DROP DATABASE等操作时，
+之前的缓存会无效并且删除。这样一定程度上也会影响我们数据库的性能。所以对一些频繁的变动表的情况开启缓存是不明智的。
+还有一种情况我们测试数据库性能的时候也要关闭缓存，避免缓存对我们测试数据的影响
+
+--数据库的缓存是开启
+show variables like '%cache%';
+	have_query_cache
+	query_cache_type
+	query_cache_size
+	
+--缓存命中次数
+SHOW STATUS LIKE 'Qcache_hits';
+
+--释放全部缓存
+reset query cache;  
+
+关闭查询缓存
+query_cache_type=0
+query_cache_size=0
+
+3,mysql自动提交
+mysql> show variables like 'autocommit';
++---------------+-------+
+| Variable_name | Value |
++---------------+-------+
+| autocommit    | OFF   |
++---------------+-------+
+--关闭自动提交
+autocommit=0
+start transaction
+commit;
+

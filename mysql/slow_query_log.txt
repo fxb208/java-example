@@ -1,0 +1,5 @@
+# Time: 2022-11-14T03:25:32.508123Z
+# User@Host: root[root] @ localhost []  Id:     8
+# Query_time: 0.006463  Lock_time: 0.000007 Rows_sent: 0  Rows_examined: 1
+SET timestamp=1668396332;
+insert into t2(c,d) (select c+1,d from t force index(c) order by c desc limit 1);

@@ -1,0 +1,36 @@
+1,聚集索引与非聚集索引的区别
+Innodb的聚集索引
+Innodb的存储索引是基于B+tree，理所当然，聚集索引也是基于B+tree。
+与非聚集索引的区别则是，聚集索引既存储了索引，也存储了行值。
+当一个表有一个聚集索引，它的数据是存储在索引的叶子页（leaf pages）。
+因此innodb也能理解为基于索引的表
+https://blog.csdn.net/jhgdike/article/details/60579883\
+
+a,聚集索引一个表只能有一个，而非聚集索引一个表可以存在多个
+b,聚集索引存储记录是物理上连续存在，而非聚集索引是逻辑上的连续，物理存储并不连续
+c,聚集索引：物理存储按照索引排序；聚集索引是一种索引组织形式，索引的键值逻辑顺序决定了表数据行的物理存储顺序
+d,非聚集索引：物理存储不按照索引排序；非聚集索引则就是普通索引了，仅仅只是对数据列创建相应的索引，不影响整个表的物理存储顺序.
+e,索引是通过二叉树的数据结构来描述的，我们可以这么理解聚簇索引：索引的叶节点就是数据节点。
+而非聚簇索引的叶节点仍然是索引节点，只不过有一个指针指向对应的数据块。
+
+2,limit 20000 加载很慢怎么解决
+mysql中limit可以实现快速分页，但是如果数据到了几百万时我们的limit必须优化才能有效的合理的实现分页了，否则可能卡死你的服务器
+limit10000,20的意思扫描满足条件的10020行，扔掉前面的10000行，返回最后的20行，问题就在这里。
+LIMIT 451350 , 30 扫描了45万多行，怪不得慢的都堵死了
+limit 30 这样的语句仅仅扫描30行。
+那么如果我们之前记录了最大ID，就可以在这里做文章
+a, 
+原sql:select id,name,content from users order by id asc limit 100000,20
+优化后sql:select id,name,content from users where id>100073 order by id asc limit 20
+
+b,子查询
+原sql:select * from wl_tagindex where byname=’f’ order by id limit 300000,10
+优化后sql:select * from (
+ select id from wl_tagindex
+ where byname=’f’ order by id limit 300000,10
+ ) a left join wl_tagindex b on a.id=b.id
+LIMIT offset, length中的offset值过大，则SQL查询语句会非常缓慢，你需增加order by，并且order by字段需要建立索引。
+如果使用子查询去优化LIMIT的话，则子查询必须是连续的，某种意义来讲，子查询不应该有where条件，where会过滤数据，使数据失去连续性
+
+3,为什么要用 B-tree
+https://learnku.com/articles/25879#44b767

@@ -1,0 +1,44 @@
+1, Online DDL
+INSTANT
+In Place
+Rebuilds Table
+
+2, InnoDB Multi-Versioning
+1) target:
+to support transactional features such as concurrency and rollback
+2) implement:
+DB_TRX_ID field indicates the transaction identifier for the last transaction that inserted or updated the row
+DB_ROLL_PTR field called the roll pointer.
+    The roll pointer points to an undo log record written to the rollback segment.
+DB_ROW_ID field contains a row ID that increases monotonically as new rows are inserted.
+    If InnoDB generates a clustered index automatically, the index contains row ID values.
+Otherwise, the DB_ROW_ID column does not appear in any index
+
+
+3,select count(*)
+
+8，sql优化
+1）union limit取更少的值
+2）最大值，最小值，可以用limit改写一下
+3）关联子查询
+4）覆盖索引，关联查询优化limit比较大的时候
+5）全局锁
+
+索引优化
+1）独立的列
+2）前缀索引和索引选择性
+3）多列索引
+4）选择索引列顺序
+5）聚集索引
+6）覆盖索引
+7）索引扫描来排序
+use index
+
+
+8）jstack分析
+阻塞 Blocked（重点关注）
+死锁 Deadlock（重点关注）
+等待资源 Waiting on condition（重点关注）
+等待获取监视器 Waiting on monitor entry（重点关注）
+
+

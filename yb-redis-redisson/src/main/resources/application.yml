@@ -1,0 +1,8 @@
+spring:
+  redis:
+    port: 6381
+
+yb:
+  redis:
+    lock:
+      name: redis_lock

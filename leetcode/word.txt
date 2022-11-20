@@ -1,0 +1,39 @@
+elastic  adj. 	有弹力的; 有弹性的; 橡皮圈(或带)的; 灵活的; 可改变的; 可伸缩的
+threshold  n. 	门槛; 门口; 阈; 界; 起始点; 开端; 起点; 入门
+a majority of  大部分 ; 大多数 ; 大多数的 
+exceed  vt. 	超过(数量); 超越(法律、命令等)的限制
+lagging  v. 	缓慢移动; 发展缓慢; 滞后; 落后于; 给(管道等)加防冻保暖层;
+topologies 	拓扑学; 拓扑; 地志学; 拓扑结构; 电路拓扑
+clauses  n.  从句;分句;子句;(法律文件等的)条款  clause的复数
+seek
+
+
+Group Replication ensures that a transaction only commits after a majority of the members in a group have received it and agreed on the relative order between all transactions that were sent concurrently. This approach works well if the total number of writes to the group does not exceed the write capacity of any member in the group. If it does and some of the members have less write throughput than others, particularly less than the writer members, those members can start lagging behind of the writers
+
+MySQL Group Replication enables you to create elastic, highly-available, fault-tolerant replication topologies
+
+
+Redis pipeling
+trip  n. （尤指短程往返的）旅行，旅游，出行;
+round-trip time  往返时间; 时间; 往返时延; 环回时间; 往返传输时间
+issue  n. 问题; 重要议题; (有关某事的)担忧; 一期; 期号; 一次发行额（或一套）; 发行; 子女;
+vt. 发出; 宣布; 公布; (正式)发给; 供给; (尤指通过正式文件)将…诉诸法律; 出版; 发行（新的一批）
+
+
+
+
+
+
+
+As distributed systems become increasingly popular, the reliability between services is becoming more important than ever before. Sentinel takes "flow" as breakthrough point, and works on multiple fields including flow control, traffic shaping, circuit breaking and system adaptive protection, to guarantee reliability and resilience for microservices
+
+reliability  n   可靠性
+resilience  n  恢复力; 弹力; 适应力; 快速恢复的能力; 还原能力;
+
+
+ZooKeeper does not guarantee that at every instance in time, two different clients will have identical views of ZooKeeper data. Due to factors like network delays, one client may perform an update before another client gets notified of the change. Consider the scenario of two clients, A and B. If client A sets the value of a znode /a from 0 to 1, then tells client B to read /a, client B may read the old value of 0, depending on which server it is connected to. If it is important that Client A and Client B read the same value, Client B should call the sync() method from the ZooKeeper API method before it performs its read. So, ZooKeeper by itself doesn't guarantee that changes occur synchronously across all servers, but ZooKeeper primitives can be used to construct higher level functions that provide useful client synchronization
+
+minimize  vt. 	减少; 降低; 使减少到最低限度; 贬低; 使显得不重要; (尤指在计算机屏幕上)使最小化
+maintain  v. 	维持; 保持; 维修; 保养; 坚持(意见); 固执己见; 供养
+primitive  adj.  原始的; 远古的; 人类或动物发展早期的; 发展水平低的; 落后的; 原始本能的
+ 
