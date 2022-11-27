@@ -1,24 +1,19 @@
 package leetcode.od.general;
 
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Scanner;
-import java.util.Stack;
+import java.util.*;
 
-/**
- * HJ77 火车进站
- */
+// 注意类名必须为 Main, 不要有任何 package xxx 信息
 public class HJ77 {
     public static void main(String[] args) {
         Scanner sc=new Scanner(System.in);
 //        int length = sc.nextInt();
+//        Stack<Integer> stack = new Stack<>();
 //        int[] arr = new int[length];
 //        for(int i=0;i<length;i++){
 //            arr[i]=sc.nextInt();
 //        }
-        int[] arr=new int[]{1,2,3};
         Stack<Integer> stack = new Stack<>();
+        int[] arr = new int[]{1,2,3};
         List<String> res = new LinkedList<>();
         dfs(res,stack,arr,0,"");
         Collections.sort(res);
@@ -37,7 +32,7 @@ public class HJ77 {
         }
         if(!stack.isEmpty()){
             int temp = stack.pop();
-            dfs(res,stack,arr,idx,str+temp+" ");
+            dfs(res,stack,arr,idx,str+temp);
             stack.push(temp);
         }
         if(idx<arr.length){
@@ -47,5 +42,4 @@ public class HJ77 {
         }
 
     }
-
 }

@@ -13,6 +13,7 @@ public class PrimeProducerTest {
 		try {
 			Thread.sleep(100);
 		} finally {
+			//producer.interrupt();
 			primeProducer.cancel();
 		}
 	
