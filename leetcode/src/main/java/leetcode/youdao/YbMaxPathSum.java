@@ -8,14 +8,22 @@ package leetcode.youdao;
  * https://leetcode.cn/problems/binary-tree-maximum-path-sum/description/
  */
 public class YbMaxPathSum {
+    int sum=Integer.MIN_VALUE;
     public int maxPathSum(TreeNode root) {
-
-
-        return 0;
+        simplePath(root);
+        return sum;
     }
 
-
-
+    public int simplePath(TreeNode node){
+        if(node == null){
+            return 0;
+        }
+        int left = Math.max(simplePath(node.left),0);
+        int right = Math.max(simplePath(node.right),0);
+        int temp=left+right+ node.val;
+        sum=Math.max(temp,sum);
+        return node.val+Math.max(left,right);
+    }
 
     public class TreeNode {
       int val;
