@@ -1,8 +1,10 @@
 package leetcode.od.dfs;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
@@ -49,5 +51,37 @@ public class Leetcode0808 {
             sb.deleteCharAt(sb.length()-1);
             visited[i]=false;
         }
+    }
+
+    public String[] permutation_sort(String S) {
+        List<String> res = new LinkedList<>();
+        StringBuilder sb = new StringBuilder();
+        char[] arr = S.toCharArray();
+        Arrays.sort(arr);
+        boolean[] visited = new boolean[S.length()];
+        backTrack(res,sb,arr,visited);
+        String[] r=new String[res.size()];
+        res.toArray(r);
+        return r;
+    }
+
+    public void backTrack(List<String> res,StringBuilder sb,char[] arr,boolean[] visited){
+        if(sb.length()==arr.length){
+            res.add(sb.toString());
+            return;
+        }
+        for(int i=0;i<arr.length;i++){
+            if(i>0 && arr[i]==arr[i-1] && visited[i-1]){
+                continue;
+            }
+            if(!visited[i]){
+                sb.append(arr[i]);
+                visited[i]=true;
+                backTrack(res,sb,arr,visited);
+                visited[i]=false;
+                sb.delete(sb.length()-1,sb.length());
+            }
+        }
+
     }
 }

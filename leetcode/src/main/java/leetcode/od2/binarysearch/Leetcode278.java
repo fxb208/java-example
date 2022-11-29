@@ -1,4 +1,4 @@
-package leetcode.od2.arr;
+package leetcode.od2.binarysearch;
 
 /**
  * 278. 第一个错误的版本

@@ -1,4 +1,4 @@
-package leetcode.od2.arr;
+package leetcode.od2.binarysearch;
 
 /**
  * 35. 搜索插入位置

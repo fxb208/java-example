@@ -1,4 +1,4 @@
-package leetcode.od.bfs;
+package leetcode.od.dfs;
 
 /**
  * 130. 被围绕的区域

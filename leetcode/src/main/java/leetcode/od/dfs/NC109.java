@@ -1,4 +1,4 @@
-package leetcode.od.bfs;
+package leetcode.od.dfs;
 
 /**
  * NC109 岛屿数量

@@ -1,4 +1,4 @@
-package leetcode.od2;
+package leetcode.od2.dfs;
 
 import java.util.ArrayList;
 import java.util.List;

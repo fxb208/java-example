@@ -1,4 +1,4 @@
-package leetcode.od2;
+package leetcode.od2.list;
 
 /**
  * 86. 分隔链表

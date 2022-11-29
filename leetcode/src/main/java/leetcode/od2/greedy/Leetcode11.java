@@ -1,4 +1,4 @@
-package leetcode.od2;
+package leetcode.od2.greedy;
 
 /**
  * 11. 盛最多水的容器

@@ -1,4 +1,4 @@
-package leetcode.od2;
+package leetcode.od2.dp;
 
 /**
  * 1143. 最长公共子序列

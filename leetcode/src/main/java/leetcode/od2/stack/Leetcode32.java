@@ -2,14 +2,38 @@ package leetcode.od2.stack;
 
 import java.util.Deque;
 import java.util.LinkedList;
-import java.util.Stack;
 
 /**
  * 32. 最长有效括号
  * 给你一个只包含 '(' 和 ')' 的字符串，找出最长有效（格式正确且连续）括号子串的长度。
  */
 public class Leetcode32 {
+
+    public static void main(String[] args) {
+        Leetcode32 yb = new Leetcode32();
+        System.out.println(yb.longestValidParentheses("()(()"));
+    }
+
     public int longestValidParentheses(String s) {
+        Deque<Integer> lst = new LinkedList<>();
+        lst.push(-1);
+        int res = 0;
+        for(int i=0;i<s.length();i++){
+            if(s.charAt(i)=='('){
+                lst.push(i);
+            }else{
+                lst.poll();
+                if(!lst.isEmpty()){
+                    res = Math.max(i-lst.peek(),res);
+                }else{
+                    lst.push(i);
+                }
+            }
+        }
+        return res;
+    }
+
+    public int longestValidParentheses_error(String s) {
         Deque<Character> lst = new LinkedList<>();
         int res = 0;
         int left = 0;

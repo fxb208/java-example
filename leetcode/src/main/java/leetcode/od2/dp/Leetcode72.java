@@ -1,4 +1,4 @@
-package leetcode.od2;
+package leetcode.od2.dp;
 
 /**
  * 72. 编辑距离

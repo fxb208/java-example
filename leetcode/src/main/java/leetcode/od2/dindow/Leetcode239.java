@@ -1,7 +1,6 @@
-package leetcode.od2;
+package leetcode.od2.dindow;
 
 import java.util.LinkedList;
-import java.util.List;
 
 /**
  * 239. 滑动窗口最大值

@@ -1,4 +1,4 @@
-package leetcode.od2.arr;
+package leetcode.od2.binarysearch;
 
 import java.util.Arrays;
 
