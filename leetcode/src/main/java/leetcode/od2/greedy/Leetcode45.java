@@ -1,4 +1,4 @@
-package leetcode.od.dp;
+package leetcode.od2.greedy;
 
 /**
  * 45. 跳跃游戏 II

@@ -4,8 +4,8 @@ package com.yb.project.algorithm.one.dynamicprogramming.day06;
  * 152. 乘积最大子数组
  * @author fxb20
  *
- *给你一个整数数组 nums ，请你找出数组中乘积最大的非空连续子数组（该子数组中至少包含一个数字），并返回该子数组所对应的乘积。
- *测试用例的答案是一个 32-位 整数。
+ *给你一个整数数组 nums，请你找出数组中乘积最大的非空连续子数组（该子数组中至少包含一个数字），并返回该子数组所对应的乘积。
+ *测试用例的答案是一个32-位 整数。
  *子数组 是数组的连续子序列。
  *
  *输入: nums = [2,3,-2,4]
@@ -19,8 +19,9 @@ package com.yb.project.algorithm.one.dynamicprogramming.day06;
 public class YbMaxProduct {
 	public static void main(String[] args) {
 		YbMaxProduct yb=new YbMaxProduct();
-		int[] nums=new int[]{-1,-2,-9,-6};
-		System.out.println(yb.maxProduct2(nums));
+		//int[] nums=new int[]{-1,-2,-9,-6};
+		int[] nums=new int[]{2,3,-2,4};
+		System.out.println(yb.maxProduct(nums));
 	}
 	
     public int maxProduct(int[] nums) {

@@ -1,9 +1,9 @@
 package com.margo.project.spring.propertyaccessor;
 
-import org.junit.Test;
 import org.springframework.beans.BeanWrapper;
 import org.springframework.beans.ConfigurablePropertyAccessor;
 import org.springframework.beans.PropertyAccessorFactory;
+import org.testng.annotations.Test;
 
 /**
  * 	快速获取PropertyAccessor两个重要实现类的工厂

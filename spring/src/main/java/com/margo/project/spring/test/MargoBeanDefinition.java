@@ -1,12 +1,13 @@
 package com.margo.project.spring.test;
 
-import org.junit.Test;
+
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.margo.project.spring.annotation.MargoBeanDefinitionConfiguration;
 import com.margo.project.spring.annotation.MargoConfiguration;
 import com.margo.project.spring.bean.factorybean.MargoBean;
+import org.testng.annotations.Test;
 
 public class MargoBeanDefinition {
 	

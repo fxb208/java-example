@@ -4,12 +4,12 @@ package com.yb.project.algorithm.one.dynamicprogramming.day05;
  * leecode 918. 环形子数组的最大和
  * @author fxb20
  * 
- * 给定一个长度为 n 的环形整数数组 nums ，返回 nums 的非空 子数组 的最大可能和 。
- * 环形数组 意味着数组的末端将会与开头相连呈环状。形式上， nums[i] 的下一个元素是 nums[(i + 1) % n] ， 
- * nums[i] 的前一个元素是 nums[(i - 1 + n) % n] 。
- * 子数组 最多只能包含固定缓冲区 nums 中的每个元素一次。
- * 形式上，对于子数组 nums[i], nums[i + 1], ..., nums[j] ，
- * 不存在 i <= k1, k2 <= j 其中 k1 % n == k2 % n 。
+ * 给定一个长度为 n 的环形整数数组nums，返回nums的非空 子数组 的最大可能和。
+ * 环形数组意味着数组的末端将会与开头相连呈环状。形式上， nums[i] 的下一个元素是 nums[(i + 1) % n] ，
+ * nums[i]的前一个元素是 nums[(i - 1 + n) % n] 。
+ * 子数组 最多只能包含固定缓冲区nums中的每个元素一次。
+ * 形式上，对于子数组nums[i], nums[i + 1], ..., nums[j]，
+ * 不存在i <= k1, k2 <= j其中k1 % n == k2 % n。
  * 
  * 输入：nums = [1,-2,3,-2]
  * 输出：3
@@ -27,8 +27,9 @@ package com.yb.project.algorithm.one.dynamicprogramming.day05;
 public class YbMaxSubarraySumCircular {
 	public static void main(String[] args) {
 		YbMaxSubarraySumCircular yb=new YbMaxSubarraySumCircular();
-		int[] nums=new int[] {-3,-2,-3};
-		System.out.println(yb.maxSubarraySumCircular(nums));
+		//int[] nums=new int[] {-3,-2,-3};
+		int[] nums=new int[] {5,-3,5};
+		System.out.println(yb.maxSubarraySumCircular_(nums));
 	}
 	
 	/**
@@ -60,5 +61,27 @@ public class YbMaxSubarraySumCircular {
 			}
 		}
 		return Math.max(max, sum-min);
+	}
+
+	public int maxSubarraySumCircular_(int[] nums) {
+		if(nums.length==1) {
+			return nums[0];
+		}
+		int sum = 0;
+		int left = 0;
+		int res = 0;
+		for(int i=0;i< nums.length*2;i++){
+			if(sum>0){
+				sum+=nums[i%nums.length];
+			}else{
+				left = i;
+				sum = nums[i%nums.length];
+			}
+			res = Math.max(sum,res);
+		}
+		if(left == 0){
+			res = res/2;
+		}
+		return res;
 	}
 }

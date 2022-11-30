@@ -4,7 +4,7 @@ package com.yb.project.algorithm.one.dynamicprogramming.day02;
  * leecode 70. 爬楼梯
  * @author fxb20
  * 
- * 假设你正在爬楼梯。需要 n 阶你才能到达楼顶。
+ * 假设你正在爬楼梯。需要 n 阶你才能到达楼顶。
  * 每次你可以爬 1 或 2 个台阶。你有多少种不同的方法可以爬到楼顶呢？
  * 
  * 示例 1：

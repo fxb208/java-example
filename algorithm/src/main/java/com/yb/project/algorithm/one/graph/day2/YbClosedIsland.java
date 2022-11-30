@@ -3,8 +3,8 @@ package com.yb.project.algorithm.one.graph.day2;
 /**
  * leecode 1254. 统计封闭岛屿的数目
  * @author fxb20
- * 二维矩阵 grid 由 0 （土地）和 1 （水）组成。
- * 岛是由最大的4个方向连通的 0 组成的群，封闭岛是一个 完全 由1包围（左、上、右、下）的岛。
+ * 二维矩阵 grid由 0（土地）和 1（水）组成。
+ * 岛是由最大的4个方向连通的 0组成的群，封闭岛是一个 完全 由1包围（左、上、右、下）的岛。
  * 请返回 封闭岛屿 的数目。
  * 来源：力扣（LeetCode）
  * 链接：https://leetcode.cn/problems/number-of-closed-islands

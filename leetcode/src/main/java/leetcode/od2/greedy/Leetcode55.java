@@ -1,4 +1,4 @@
-package leetcode.od.dp;
+package leetcode.od2.greedy;
 
 /**
  * 55. 跳跃游戏
@@ -14,16 +14,19 @@ public class Leetcode55 {
     }
 
     public boolean canJump(int[] nums) {
-        boolean[] dp = new boolean[nums.length];
-        dp[0]=true;
-        for(int i=1;i< nums.length;i++){
-            for(int j=1;i-j>=0;j++){
-                if(dp[i-j] && nums[i-j]>=j){
-                    dp[i]=true;
-                    break;
-                }
-            }
+        if(nums.length==1){
+            return true;
         }
-        return dp[nums.length-1];
+        int right=nums[0];
+        for(int i=1;i<nums.length;i++){
+            if(i<=right){
+                right = Math.max(right,i+nums[i]);
+            }
+            if(right>=nums.length-1){
+                return true;
+            }
+
+        }
+        return false;
     }
 }

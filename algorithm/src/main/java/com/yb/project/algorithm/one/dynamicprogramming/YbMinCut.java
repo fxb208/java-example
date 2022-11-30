@@ -62,4 +62,55 @@ public class YbMinCut {
     	}
     	return result[n-1];
     }
+
+	/**
+	 * dp[i]是回文字串+ s.subString(i,j)是回文字串，最小值
+	 * @param s
+	 * @return
+	 */
+	public int minCut_(String s) {
+		int n=s.length();
+		int[] result=new int[n+1];
+		result[0]=0;
+		for(int i=1;i<n;i++) {
+			result[i]=i;
+		}
+		boolean[][] dp=new boolean[n][n];
+		for(int i=0;i<n;i++) {
+			dp[i][i]=true;
+		}
+		for(int i=1;i<n;i++) {
+			for(int j=0;i+j<n;j++) {
+				if(s.charAt(j)==s.charAt(i+j)) {
+					if(i==1) {
+						dp[j][i+j]=true;
+					}else if(dp[j+1][i+j-1]) {
+						dp[j][i+j]=true;
+					}
+				}
+			}
+		}
+		for(int i=0;i<n;i++){
+			for(int j=n-1;j>=i;j--){
+				if(dp[i][j]){
+
+				}
+			}
+		}
+
+		for(int i=1;i<n;i++) {
+			for(int j=0;j<=i;j++) {
+				if(dp[j][i]) {
+					if(j==0) {
+						result[i]=0;
+						break;
+					}else {
+						result[i]=Math.min(result[j-1]+1, result[i]);
+					}
+
+				}
+			}
+		}
+		return result[n-1];
+	}
 }

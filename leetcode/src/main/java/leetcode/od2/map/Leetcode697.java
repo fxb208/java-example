@@ -22,6 +22,37 @@ public class Leetcode697 {
 
     public int findShortestSubArray(int[] nums) {
         int res= Integer.MAX_VALUE;
+        Map<Integer,int[]> map = new HashMap<>();
+        for(int i=0;i<nums.length;i++){
+            int key = nums[i];
+            if(map.containsKey(nums[i])){
+                int[] value = map.get(key);
+                value[0]++;
+                value[2]=i;
+                map.put(key,value);
+            }else{
+                int[] value = new int[3];
+                value[0]=1;
+                value[1]=i;
+                value[2]=i;
+                map.put(key,value);
+            }
+        }
+        int count = 0;
+        for(Integer key:map.keySet()){
+            if(map.get(key)[0]>count){
+                count = map.get(key)[0];
+                res = map.get(key)[2]-map.get(key)[1]+1;
+            }else if(map.get(key)[0]==count){
+                res = Math.min(res,map.get(key)[2]-map.get(key)[1]+1);
+            }
+        }
+        return res;
+    }
+
+
+    public int findShortestSubArray_low(int[] nums) {
+        int res= Integer.MAX_VALUE;
         Map<Integer,Integer> map = new HashMap<>();
         for(int i=0;i<nums.length;i++){
             map.put(nums[i], map.getOrDefault(nums[i],0)+1);
