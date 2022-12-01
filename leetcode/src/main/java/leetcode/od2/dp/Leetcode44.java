@@ -16,7 +16,10 @@ public class Leetcode44 {
 
     public static void main(String[] args) {
         Leetcode44 yb = new Leetcode44();
-        System.out.println(yb.isMatch("ac","a*c"));
+        // System.out.println(yb.isMatch("*h","h"));
+        // System.out.println(yb.isMatch("a*?*c","a@c"));
+        System.out.println(yb.isMatch("txt12.xls","t?t*1*.*"));
+
     }
 
     public boolean isMatch(String s, String p) {

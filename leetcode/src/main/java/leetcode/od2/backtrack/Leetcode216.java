@@ -15,13 +15,20 @@ public class Leetcode216 {
 
     public static void main(String[] args) {
         Leetcode216 yb = new Leetcode216();
-        yb.combinationSum3(3,7);
+        yb.combinationSum3(3,9);
     }
 
+    /**
+     * except [[1,2,6],[1,3,5],[2,3,4]]
+     * fact   [[1,2,6],[1,3,5],[1,5,3],[2,3,4],[2,4,3],[3,2,4],[4,2,3]]
+     * @param k
+     * @param n
+     * @return
+     */
     public List<List<Integer>> combinationSum3(int k, int n) {
         List<List<Integer>> res = new ArrayList<>();
         List<Integer> path = new ArrayList<>();
-        backTrack(res,path,k,n,1,new boolean[9]);
+        backTrack(res,path,k,n,1,new boolean[10]);
         return res;
     }
 
@@ -51,9 +58,6 @@ public class Leetcode216 {
     }
 
     public void backTrack(List<List<Integer>> res,List<Integer> path,int k,int n,int idx){
-        if(idx==3){
-            System.out.println(3);
-        }
         if(path.size()==k){
             if(n==0){
                 res.add(new ArrayList<>(path));
@@ -61,9 +65,11 @@ public class Leetcode216 {
             return;
         }
         for(int i=idx;i<=9;i++){
-            path.add(i);
-            backTrack(res,path,k,n-i,i+1);
-            path.remove(path.size()-1);
+            if(n-i>=0){
+                path.add(i);
+                backTrack(res,path,k,n-i,i+1);
+                path.remove(path.size()-1);
+            }
         }
     }
 }
