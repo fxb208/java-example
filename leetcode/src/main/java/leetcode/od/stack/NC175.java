@@ -1,8 +1,6 @@
 package leetcode.od.stack;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
 
 /**
  *  NC175 合法的括号字符串

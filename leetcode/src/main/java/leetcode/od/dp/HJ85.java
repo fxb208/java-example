@@ -1,6 +1,5 @@
 package leetcode.od.dp;
 
-import java.util.Scanner;
 
 /**
  * HJ85 最长回文子串

@@ -3,6 +3,9 @@ package leetcode.od2.map;
 import java.util.HashMap;
 import java.util.Scanner;
 
+/**
+ * HJ59 找出字符串中第一个只出现一次的字符
+ */
 public class HJ59 {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);

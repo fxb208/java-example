@@ -1,4 +1,4 @@
-package leetcode.od2;
+package leetcode.od2.stack;
 
 import java.util.Deque;
 import java.util.LinkedList;

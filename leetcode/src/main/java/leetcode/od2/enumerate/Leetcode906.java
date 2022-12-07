@@ -1,4 +1,4 @@
-package leetcode.od2;
+package leetcode.od2.enumerate;
 
 import java.io.BufferedWriter;
 import java.io.File;

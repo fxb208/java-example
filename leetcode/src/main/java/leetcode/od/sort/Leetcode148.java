@@ -1,6 +1,5 @@
 package leetcode.od.sort;
 
-import leetcode.od.list.Leetcode876;
 
 /**
  * 148. 排序链表
