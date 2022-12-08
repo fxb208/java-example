@@ -1,6 +1,5 @@
 package com.margo.project.spring.bean.definition;
 
-import org.junit.Test;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.support.RootBeanDefinition;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -8,6 +7,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import com.margo.project.spring.annotation.MargoBeanDefinitionConfiguration;
 import com.margo.project.spring.bean.autowired.MargoAutowiredBean;
 import com.margo.project.spring.bean.autowired.MargoGirlVO;
+import org.testng.annotations.Test;
 
 public class MargoBeanDefinition {	
 	//@Test
