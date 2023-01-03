@@ -7,7 +7,10 @@ repositories {
 }
 
 dependencies {
-implementation 'junit:junit:4.13.1'
+	implementation 'junit:junit:4.13.1'
+	// https://mvnrepository.com/artifact/com.google.guava/guava
+	implementation group: 'com.google.guava', name: 'guava', version: '31.1-jre'
+
 }
 
 tasks.named('test') {

@@ -24,7 +24,7 @@ public class MargoBeanDefinition {
 			System.out.println(beanDefinition.getFactoryBeanName());
 			System.out.println("************************************");
 		}
-		
+		applicationContext.close();
 	}
 	
 	//@Test

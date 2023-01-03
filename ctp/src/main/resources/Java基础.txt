@@ -1,0 +1,2 @@
+1，String和StringBuffer区别
+2，单例模式
